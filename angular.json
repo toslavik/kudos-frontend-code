@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "vendor-fe": {
+    "evo-fe": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/vendor-fe",
+            "outputPath": "dist/evo-fe",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -62,18 +62,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "vendor-fe:build"
+            "browserTarget": "evo-fe:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "vendor-fe:build:production"
+              "browserTarget": "evo-fe:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "vendor-fe:build"
+            "browserTarget": "evo-fe:build"
           }
         },
         "test": {
@@ -107,7 +107,7 @@
         }
       }
     },
-    "vendor-fe-e2e": {
+    "evo-fe-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -116,11 +116,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "vendor-fe:serve"
+            "devServerTarget": "evo-fe:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "vendor-fe:serve:production"
+              "devServerTarget": "evo-fe:serve:production"
             }
           }
         },
@@ -136,5 +136,5 @@
       }
     }
   },
-  "defaultProject": "vendor-fe"
+  "defaultProject": "evo-fe"
 }

@@ -1,5 +1,5 @@
 {
-  "name": "vendor-fe",
+  "name": "evo-fe",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
