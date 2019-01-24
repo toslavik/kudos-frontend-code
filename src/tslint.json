@@ -12,6 +12,21 @@
             "element",
             "app",
             "kebab-case"
-        ]
+        ],
+      "no-inferrable-types": false,
+      "no-trailing-whitespace": false,
+      "one-line": false,
+      "no-shadowed-variable": [
+        false,
+        {
+          "class": true,
+          "enum": true,
+          "function": true,
+          "interface": false,
+          "namespace": true,
+          "typeAlias": false,
+          "typeParameter": false
+        }
+      ]
     }
 }

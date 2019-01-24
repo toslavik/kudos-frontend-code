@@ -1,35 +1,59 @@
 <div class="main-container">
-  <div class="alert alert-app-level">
-    Vývojové prostředí
-  </div>
-  <header class="header header-evo">
+
+  <header class="header-6">
     <div class="branding">
-      <a href="#" class="nav-link">
-        <img src="../assets/eva_logo_mini.png" alt="Logo"/>
-        <span class="title title-evo">Evidence externích objednávek</span>
+      <a href="/kudos-dashboard" class="nav-link">
+        <img src="../assets/ms_logo_.png" alt="Logo" width="200" height="40"/>
+        <span style="margin-left: 10%" class="title">Project Kudos</span>
       </a>
+    </div>
+    <div class="header-nav">
+      <a href="https://azure.microsoft.com" class="nav-link nav-icon">
+        <clr-icon shape="cloud"></clr-icon>
+      </a>
+      <!--<a href="https://azure.microsoft.com" class="active nav-link nav-icon" title="File">-->
+        <!--<clr-icon shape="folder"></clr-icon>-->
+      <!--</a>-->
+    </div>
+    <form class="search">
+      <label for="search_input">
+        <input id="search_input" type="text" placeholder="Search for keywords...">
+      </label>
+    </form>
+    <div class="header-actions">
+      <clr-dropdown>
+        <button class="nav-text" clrDropdownTrigger>
+          {{currentUser}}
+          <clr-icon shape="user"></clr-icon>
+          <clr-icon shape="caret down"></clr-icon>
+        </button>
+        <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+          <a href="/kudos-dashboard" clrDropdownItem>Profile</a>
+          <a href="/login-page" clrDropdownItem (click)="logout()">Log out</a>
+        </clr-dropdown-menu>
+      </clr-dropdown>
     </div>
   </header>
   <nav class="subnav">
     <ul class="nav">
       <li class="nav-item">
-        <a class="nav-link" href="#">Mé objednávky</a>
+        <a class="nav-link" href="#">My Kudos</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Zadavatel</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">HR BP</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Backoffice</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Vyhledávání</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" [routerLink]="'/administration/vendor-admin'">Administrace</a>
-      </li>
+      <!--<li class="nav-item">-->
+        <!--<a class="nav-link" href="#">Zadavatel</a>-->
+      <!--</li>-->
+      <!--<li class="nav-item">-->
+        <!--<a class="nav-link" href="#">HR BP</a>-->
+      <!--</li>-->
+      <!--<li class="nav-item">-->
+        <!--<a class="nav-link" href="#">Backoffice</a>-->
+      <!--</li>-->
+      <!--<li class="nav-item">-->
+        <!--<a class="nav-link" href="#">Vyhledávání</a>-->
+      <!--</li>-->
+      <!--<li class="nav-item">-->
+        <!--<a class="nav-link" routerLinkActive="active" [routerLink]="'/administration/vendor-admin'">Administrace</a>-->
+      <!--</li>-->
     </ul>
   </nav>
   <div class="content-container">

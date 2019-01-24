@@ -1,0 +1,39 @@
+<form>
+  <section class="form-block">
+    <label>Give a Kudo</label>
+    <div class="form-group">
+      <label for="formFields_13">Author</label>
+      <input type="text" id="formFields_13" size="35" readonly value="{{loggedUser}}">
+    </div>
+    <div class="form-group">
+      <label for="usersCombo">Choose a kudo employee</label>
+      <clr-select-container>
+        <select id="usersCombo" clrSelect name="users" [(ngModel)]="selectedUser">
+          <option *ngFor="let user of users" [value]="user.fullname">{{user.fullname}}</option>
+        </select>
+      </clr-select-container>
+    </div>
+    <!--<div class="form-group">-->
+      <!--<label for="catCombo">Choose a category</label>-->
+      <!--<clr-select-container>-->
+        <!--<select id="catCombo" clrSelect name="users" [(ngModel)]="selectedCategory">-->
+          <!--<option *ngFor="let cat of categories" [value]="cat.description">{{cat.description}}</option>-->
+        <!--</select>-->
+      <!--</clr-select-container>-->
+    <!--</div>-->
+    <!--<div class="form-group">-->
+      <!--<label for="aForm_4">Description</label>-->
+      <!--<textarea clrTextarea  id="aForm_4" rows="5" cols="20" [(ngModel)]="description" name="description" required></textarea>-->
+    <!--</div>-->
+    <div class="form-group">
+      <label for="vertical-textarea-basic" class="">Description</label>
+      <div class="clr-control-container">
+        <div class="clr-textarea-wrapper">
+          <textarea id="vertical-textarea-basic" class="clr-textarea" rows="5" cols="100" [(ngModel)]="description" name="description"></textarea>
+          <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+        </div>
+      </div>
+    </div>
+    <button (click)="saveKudo()" type="submit" class="btn btn-primary" style="padding: 0;">Save</button>
+  </section>
+</form>

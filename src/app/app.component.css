@@ -1,7 +1,8 @@
-.header-evo {
-  background-color: rgb(204,230,247);
+.header-kudos {
+  background-color: rgb(0, 0, 0);
 }
 
-.title-evo {
-  color: #000000 !important;
+.title-kudos {
+  color: #ffffff !important;
+  font-size: 120%;
 }

@@ -1,0 +1,22 @@
+<div class="login-wrapper">
+  <form class="login">
+    <section class="title">
+      <h3 class="welcome">Welcome to</h3>
+      Azure Kudos application
+      <h5 class="hint">Choose user to login</h5>
+    </section>
+    <div class="login-group">
+      <clr-select-container>
+         <select clrSelect name="users" [(ngModel)]="selectedUser">
+          <option *ngFor="let user of users" [value]="user.fullname">{{user.fullname}}</option>
+        </select>
+      </clr-select-container>
+      <clr-checkbox-wrapper>
+        <label>Remember me</label>
+        <input type="checkbox" name="rememberMe" clrCheckbox />
+      </clr-checkbox-wrapper>
+      <button [clrLoading]="submitLoading" type="submit" class="btn btn-outline" (click)="loginUser()">LOGIN</button>
+      <a href="javascript://" class="signup">Sign up for a Company ID</a>
+    </div>
+  </form>
+</div>
