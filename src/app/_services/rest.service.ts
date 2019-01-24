@@ -35,21 +35,21 @@ export class RestService {
 
   addKudos (kudo): Observable<any> {
     console.log(kudo);
-    return this.http.post<any>(this.apiURLKudos + '/add', JSON.stringify(kudo), httpOptions).pipe(
+    return this.http.post<any>(this.apiURLKudos, JSON.stringify(kudo), httpOptions).pipe(
       tap((product) => console.log(`added product w/ id=${product.id}`)),
       catchError(this.handleError<any>('addProduct'))
     );
   }
 
   updateKudos (kudo): Observable<any> {
-    return this.http.put(this.apiURLKudos + '/update', JSON.stringify(kudo), httpOptions).pipe(
+    return this.http.put(this.apiURLKudos, JSON.stringify(kudo), httpOptions).pipe(
       tap(_ => console.log(`updated product id=${kudo}`)),
       catchError(this.handleError<any>('updateProduct'))
     );
   }
 
   deleteKudos (id): Observable<any> {
-    return this.http.delete<any>(this.apiURLKudos + '/delete' + id, httpOptions).pipe(
+    return this.http.delete<any>(this.apiURLKudos + '/' + id, httpOptions).pipe(
       tap(_ => console.log(`deleted kudos id=${id}`)),
       catchError(this.handleError<any>('deleteKudos'))
     );
