@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "serve": "ng serve"
+    "serve": "ng serve",
+    "postinstall": "npm build"
   },
   "private": true,
   "dependencies": {
