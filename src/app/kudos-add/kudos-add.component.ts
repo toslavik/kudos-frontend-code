@@ -14,7 +14,7 @@ export class KudosAddComponent implements OnInit {
   public users: User[];
   public categories: Category[];
   public loggedUser: any;
-  private selectedUser: User;
+  public selectedUser: User;
   private selectedCategory: Category;
   public description: string;
 

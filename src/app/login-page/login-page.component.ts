@@ -21,7 +21,7 @@ export class LoginPageComponent implements OnInit {
     }
 
      }
-  private selectedUser: User;
+  public selectedUser: User;
 
   ngOnInit() {
     this.userService.getAll().subscribe((data: []) => {
