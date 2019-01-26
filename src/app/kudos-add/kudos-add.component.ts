@@ -15,8 +15,9 @@ export class KudosAddComponent implements OnInit {
   public categories: Category[];
   public loggedUser: any;
   public selectedUser: User;
-  private selectedCategory: Category;
+  public selectedCategory: Category;
   public description: string;
+  protected selectedCategoryId: string;
 
   // @Input() kudosData = { id: '', giver: '', reciever: '' };
 
@@ -30,23 +31,34 @@ export class KudosAddComponent implements OnInit {
       console.log(data);
       this.users = data;
     });
+    this.getFakeCategories();
   }
 
   saveKudo() {
     console.log(this.description);
     this.completeKudo();
     console.log(this.kudo);
-    // this.rest.addKudos(this.kudo).subscribe((result) => {
-    //   this.router.navigate(['/kudos-dashboard/']);
-    // }, (err) => {
-    //   console.log(err);
-    // });
+    this.rest.addKudos(this.kudo).subscribe((result) => {
+      this.router.navigate(['/kudos-dashboard/']);
+    }, (err) => {
+      console.log(err);
+    });
   }
 
+  getFakeCategories(){
+    this.categories = [{'id':'1','description': 'Technical'},{'id':'2','description': 'HR'}];
+  }
+  getSelectedCat(id: string): Category{
+    this.selectedCategory = this.categories.filter(function(cat) {
+      return cat.id === id;
+    })[0];
+    console.log(this.selectedCategory);
+    return this.selectedCategory;
+  }
   private completeKudo(){
     this.kudo.author = this.loggedUser;
-    this.kudo.receiver = this.selectedUser.fullname;
-    this.kudo.category = this.loggedUser;
+    this.kudo.receiver = this.selectedUser.toString();
+    this.kudo.category = this.getSelectedCat(this.selectedCategoryId);
     this.kudo.description = this.description;
   }
 }

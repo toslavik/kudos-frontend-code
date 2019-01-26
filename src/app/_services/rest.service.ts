@@ -36,7 +36,6 @@ export class RestService {
   addKudos (kudo): Observable<any> {
     console.log(kudo);
     return this.http.post<any>(this.apiURLKudos, JSON.stringify(kudo), httpOptions).pipe(
-      tap((product) => console.log(`added product w/ id=${product.id}`)),
       catchError(this.handleError<any>('addProduct'))
     );
   }
