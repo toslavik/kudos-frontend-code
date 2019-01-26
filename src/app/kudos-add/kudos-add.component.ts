@@ -17,7 +17,7 @@ export class KudosAddComponent implements OnInit {
   public selectedUser: User;
   public selectedCategory: Category;
   public description: string;
-  protected selectedCategoryId: string;
+  public selectedCategoryId: string;
 
   // @Input() kudosData = { id: '', giver: '', reciever: '' };
 
