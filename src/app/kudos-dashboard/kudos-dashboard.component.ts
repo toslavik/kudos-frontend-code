@@ -34,7 +34,7 @@ export class KudosDashboardComponent implements OnInit {
   }
 
   onDelete(kudo: Kudo){
-    this.restService.deleteKudos(kudo.id).subscribe(res => {
+    this.restService.deleteKudos(kudo).subscribe(res => {
         this.restService.getKudos();
       }, (err) => {
         console.log(err);
