@@ -33,9 +33,15 @@ export class KudosDashboardComponent implements OnInit {
     // );
   }
 
+  spliceData(kudo: Kudo){
+    const item = this.kudos.find(item => item.id === kudo.id);
+    this.kudos.splice(this.kudos.indexOf(item));
+  }
+
   onDelete(kudo: Kudo){
-    this.restService.deleteKudos(kudo).subscribe(res => {
-        this.restService.getKudos();
+    this.restService.deleteKudos(kudo).subscribe(
+      (ok)=>{
+      this.spliceData(kudo);
       }, (err) => {
         console.log(err);
       }

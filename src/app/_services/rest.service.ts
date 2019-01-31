@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders, HttpErrorResponse, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpErrorResponse, HttpParams, HttpResponse} from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 import {environment} from '../../environments/environment';
@@ -9,7 +9,7 @@ const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
     'Ocp-Apim-Subscription-Key': '6e0eeb81c3f04afd96fc4f5f7386caf3',
-    'Api-Version': 'v2',
+    // 'Api-Version': 'v2',
     'Ocp-Apim-Trace': 'true'
   })
 };
@@ -18,7 +18,6 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class RestService {
-
 
   private apiURLKudos = environment.apiUrlBackend + '/kudos';
 
@@ -50,12 +49,17 @@ export class RestService {
   }
 
   deleteKudos (kudo): Observable<any> {
+    const httpOptionsDel = {
+      params: new HttpParams(),
+      headers: new HttpHeaders({
+        'Ocp-Apim-Subscription-Key': '6e0eeb81c3f04afd96fc4f5f7386caf3',
+        'Ocp-Apim-Trace': 'true'
+      }),
+      body: 'text'
+    };
 
-    const params: HttpParams = new HttpParams();
-    params.set('pKey', kudo.receiver);
-    httpOptions.params = params;
-    return this.http.delete<any>(this.apiURLKudos + '/' + kudo.id, httpOptions).pipe(
-      tap(_ => console.log(`deleted kudos id=${kudo.id}`)),
+    const apiurl = this.apiURLKudos + '/' + kudo.id + '?pKey=' + kudo.receiver;
+    return this.http.delete(apiurl, httpOptionsDel).pipe(
       catchError(this.handleError<any>('deleteKudos'))
     );
   }

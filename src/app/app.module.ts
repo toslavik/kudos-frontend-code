@@ -16,6 +16,7 @@ import {AdminComponent} from './admin';
 import {ClrFormsModule} from '@clr/angular';
 import {FormsModule} from '@angular/forms';
 import { KudosDashboardComponent } from './kudos-dashboard/kudos-dashboard.component';
+import { KudosEditComponent } from './kudos-edit/kudos-edit.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { KudosDashboardComponent } from './kudos-dashboard/kudos-dashboard.compo
     KudosAddComponent,
     HomeComponent,
     AdminComponent,
-    KudosDashboardComponent
+    KudosDashboardComponent,
+    KudosEditComponent
   ],
   imports: [
     BrowserModule,
