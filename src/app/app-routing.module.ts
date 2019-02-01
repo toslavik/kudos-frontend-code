@@ -6,16 +6,20 @@ import {LoginPageComponent} from './login-page/login-page.component';
 import {KudosAddComponent} from './kudos-add/kudos-add.component';
 import {KudosDashboardComponent} from './kudos-dashboard/kudos-dashboard.component';
 import {AuthGuard, AuthGuardSimple} from './_guards';
+import { KudosEditComponent } from './kudos-edit/kudos-edit.component';
 
 const routes: Routes = [{path: 'administration/vendor-admin', component: VendorAdministrationComponent},
   {path: 'login-page', component: LoginPageComponent},
   {path: 'kudos-add', component: KudosAddComponent,  canActivate: [AuthGuardSimple]},
   {path: 'kudos-dashboard', component: KudosDashboardComponent, canActivate: [AuthGuardSimple]},
+  {path: 'kudos-edit', component: KudosEditComponent, canActivate: [AuthGuardSimple]},
   {path: '', redirectTo: '/login-page', pathMatch: 'full'},
   {path: '**', component: NotFoundComponent}];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes
+    // ,{enableTracing: true}
+    )],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}

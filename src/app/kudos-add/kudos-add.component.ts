@@ -23,7 +23,7 @@ export class KudosAddComponent implements OnInit {
 
   constructor(public rest: RestService, public userService: UserService, private route: ActivatedRoute,
               private router: Router, private authenticationservice: AuthenticationServiceSimple) {
-    this.loggedUser = authenticationservice.currentUserValue;
+                this.loggedUser = authenticationservice.currentUserValue;
   }
 
   ngOnInit() {

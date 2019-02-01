@@ -24,12 +24,17 @@ export class RestService {
   constructor(private http: HttpClient) {}
 
   private extractData(res: Response) {
-    let body = res;
+    const body = res;
     return body || { };
   }
 
   getKudos(): Observable<any> {
     return this.http.get(this.apiURLKudos, httpOptions).pipe(
+      map(this.extractData));
+  }
+
+  getKudosById(kudoid: string): Observable<any> {
+    return this.http.get(this.apiURLKudos + '/' + kudoid, httpOptions).pipe(
       map(this.extractData));
   }
 
@@ -42,8 +47,9 @@ export class RestService {
   }
 
   updateKudos (kudo): Observable<any> {
-    return this.http.put(this.apiURLKudos, JSON.stringify(kudo), httpOptions).pipe(
-      tap(_ => console.log(`updated product id=${kudo}`)),
+    console.log('update kudo:' + JSON.stringify(kudo));
+    return this.http.put(this.apiURLKudos + '/' + kudo.id + '?pKey=' + kudo.receiver, JSON.stringify(kudo), httpOptions).pipe(
+      tap(_ => console.log(`updated kudo=${kudo}`)),
       catchError(this.handleError<any>('updateProduct'))
     );
   }

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Kudo, User} from '../_models';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, Router, NavigationExtras} from '@angular/router';
 import {RestService} from '../_services/rest.service';
+import { AuthenticationServiceSimple } from '../_services';
 
 @Component({
   selector: 'app-kudos-dashboard',
@@ -12,30 +13,28 @@ export class KudosDashboardComponent implements OnInit {
 
   public kudos: Kudo[];
   public kudo: Kudo;
+  public loggedUser: any;
 
   constructor( private route: ActivatedRoute, private router: Router,
-               private restService: RestService) { }
+               private restService: RestService,private authenticationservice: AuthenticationServiceSimple) {
+                this.loggedUser = authenticationservice.currentUserValue;
+               }
 
   ngOnInit() {
-    this.restService.getKudos().subscribe((data: []) => {
-      console.log(data);
-      this.kudos = data;
-    });
+    this.fetchKudos();
   }
 
   onEdit(kudo: Kudo){
-    this.router.navigate(['/kudos-edit']);
-    // this.restService.updateKudos(kudo.id).subscribe(res => {
-    //     this.restService.getKudos();
-    //   }, (err) => {
-    //     console.log(err);
-    //   }
-    // );
+   console.log('kudo to edit:' + JSON.stringify(kudo));
+    // const navigationExtras: NavigationExtras = {queryParams: kudo};
+    console.log('kudoid' + kudo.id);
+    this.router.navigate(['/kudos-edit',{ queryParams: kudo.id}]);
   }
 
   spliceData(kudo: Kudo){
     const item = this.kudos.find(item => item.id === kudo.id);
     this.kudos.splice(this.kudos.indexOf(item));
+    this.fetchKudos();
   }
 
   onDelete(kudo: Kudo){
@@ -48,7 +47,23 @@ export class KudosDashboardComponent implements OnInit {
     );
   }
 
+  fetchKudos(){
+    this.restService.getKudos().subscribe((data: []) => {
+      console.log(data);
+      this.kudos = data;
+    });
+  }
+
   createNew(){
     this.router.navigate(['/kudos-add']);
   }
+  checkPermission(kudo: Kudo): boolean{
+      if(kudo.author!==this.loggedUser){
+        return true;
+      }else {
+        return false;
+      }
+
+  }
+
 }

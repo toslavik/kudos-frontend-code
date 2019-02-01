@@ -14,8 +14,8 @@
 
         <clr-dg-row *clrDgItems="let kudo of kudos" [clrDgItem]="kudo">
           <clr-dg-action-overflow>
-            <button class="action-item" (click)="onEdit(kudo)">Edit</button>
-            <button class="action-item" (click)="onDelete(kudo)">Delete</button>
+            <button class="action-item" (click)="onEdit(kudo)" [disabled]="checkPermission(kudo)" >Edit</button>
+            <button class="action-item" (click)="onDelete(kudo)" [disabled]="checkPermission(kudo)" >Delete</button>
           </clr-dg-action-overflow>
           <clr-dg-cell>{{kudo.id}}</clr-dg-cell>
           <clr-dg-cell>{{kudo.author}}</clr-dg-cell>
