@@ -10,15 +10,15 @@ export class Globals implements OnInit{
   ngOnInit() {
   }
   constructor(private http: HttpClient) {
-    this.getUrl();
   }
 
   getUrl(){
     if(environment.production) {
       console.log('urlbackend :' + this.urlBackend);
       this.http.get('/assets/default.aspx',{responseType: 'text'}).subscribe(data => {
-        console.log(data);
+
         this.urlBackend = data;
+        console.log(this.urlBackend);
        });
     } else {
       this.urlBackend = environment.apiUrlBackend;

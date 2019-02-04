@@ -17,7 +17,8 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.authenticationService.userSubject.subscribe(currentUser => this.currentUser = currentUser);
   }
-  constructor(private authenticationService: AuthenticationServiceSimple) {
+  constructor(private authenticationService: AuthenticationServiceSimple, private global: Globals) {
+    global.getUrl();
   }
 
     logout() {
