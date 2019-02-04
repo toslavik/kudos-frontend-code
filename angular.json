@@ -21,7 +21,8 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/web.config"
+              "src/web.config",
+              "src/assets/default.aspx"
             ],
             "styles": [
               "node_modules/@clr/icons/clr-icons.css",

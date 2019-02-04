@@ -1,6 +1,8 @@
 import {Component, forwardRef, Inject, OnInit} from '@angular/core';
 import {AuthenticationServiceSimple} from './_services/authentication-simple.service';
 import {LoginPageComponent} from './login-page/login-page.component';
+import { HttpClient } from '@angular/common/http';
+import { Globals } from './globals';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +17,8 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.authenticationService.userSubject.subscribe(currentUser => this.currentUser = currentUser);
   }
-  constructor(private authenticationService: AuthenticationServiceSimple) {}
+  constructor(private authenticationService: AuthenticationServiceSimple) {
+  }
 
     logout() {
     this.authenticationService.logout();

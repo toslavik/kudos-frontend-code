@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders, HttpErrorResponse, HttpParams, HttpResponse} fr
 import { Observable, of } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 import {environment} from '../../environments/environment';
+import { Globals } from '../globals';
 
 const httpOptions = {
   params: new HttpParams(),
@@ -19,9 +20,9 @@ const httpOptions = {
 })
 export class RestService {
 
-  private apiURLKudos = environment.apiUrlBackend + '/kudos';
+  private apiURLKudos = this.globals.urlBackend + '/kudos';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private globals: Globals) {}
 
   private extractData(res: Response) {
     const body = res;
@@ -29,6 +30,7 @@ export class RestService {
   }
 
   getKudos(): Observable<any> {
+    console.log(this.globals.urlBackend);
     return this.http.get(this.apiURLKudos, httpOptions).pipe(
       map(this.extractData));
   }
@@ -69,6 +71,7 @@ export class RestService {
       catchError(this.handleError<any>('deleteKudos'))
     );
   }
+
 
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

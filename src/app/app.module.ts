@@ -17,6 +17,7 @@ import {ClrFormsModule} from '@clr/angular';
 import {FormsModule} from '@angular/forms';
 import { KudosDashboardComponent } from './kudos-dashboard/kudos-dashboard.component';
 import { KudosEditComponent } from './kudos-edit/kudos-edit.component';
+import { Globals } from './globals';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import { KudosEditComponent } from './kudos-edit/kudos-edit.component';
     ClarityModule,
     BrowserAnimationsModule
   ],
-  providers: [
+  providers: [Globals
     // {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
     ],
