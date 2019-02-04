@@ -16,7 +16,7 @@ export class Globals implements OnInit{
   getUrl(){
     if(environment.production) {
       console.log('urlbackend :' + this.urlBackend);
-      this.http.get('http://localhost:4200/assets/default.aspx',{responseType: 'text'}).subscribe(data => {
+      this.http.get('/assets/default.aspx',{responseType: 'text'}).subscribe(data => {
         console.log(data);
         this.urlBackend = data;
        });
