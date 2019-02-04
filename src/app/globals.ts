@@ -1,5 +1,6 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable, OnInit, isDevMode, enableProdMode } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from './../environments/environment.prod';
 
 @Injectable()
 export class Globals implements OnInit{
@@ -9,9 +10,18 @@ export class Globals implements OnInit{
   ngOnInit() {
   }
   constructor(private http: HttpClient) {
-    this.http.get('http://localhost:4200/assets/default.aspx',{responseType: 'text'}).subscribe(data => {
-                   console.log(data);
-                   this.urlBackend = data;
-                  });
+    this.getUrl();
+  }
+
+  getUrl(){
+    if(isDevMode()) {
+        this.urlBackend = environment.apiUrlBackend;
+    } else {
+      this.http.get('http://localhost:4200/assets/default.aspx',{responseType: 'text'}).subscribe(data => {
+        console.log(data);
+        this.urlBackend = data;
+       });
+    }
+
   }
 }

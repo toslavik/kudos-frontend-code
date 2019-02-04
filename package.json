@@ -5,11 +5,12 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "buildProd": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "serve": "ng serve",
-    "postinstall": "npm run-script build"
+    "postinstall": "npm run-script buildProd"
   },
   "private": true,
   "dependencies": {
@@ -25,6 +26,7 @@
     "@clr/icons": "^1.0.4",
     "@clr/ui": "^1.0.4",
     "@webcomponents/custom-elements": "^1.2.1",
+    "applicationinsights-js": "^1.0.20",
     "core-js": "^2.5.4",
     "kudu": "^1.0.0-alpha.13",
     "rxjs": "~6.3.3",

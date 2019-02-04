@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +18,8 @@ import {FormsModule} from '@angular/forms';
 import { KudosDashboardComponent } from './kudos-dashboard/kudos-dashboard.component';
 import { KudosEditComponent } from './kudos-edit/kudos-edit.component';
 import { Globals } from './globals';
+import { MonitoringService } from './_services/monitoring.service';
+import { MonitoringErrorHandler } from './_helpers/error.handler';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,11 @@ import { Globals } from './globals';
     ClarityModule,
     BrowserAnimationsModule
   ],
-  providers: [Globals
+  providers: [Globals, MonitoringService,
+    {
+      provide: ErrorHandler,
+      useClass: MonitoringErrorHandler
+    }
     // {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
     ],
