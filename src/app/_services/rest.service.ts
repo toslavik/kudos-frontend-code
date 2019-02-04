@@ -20,7 +20,7 @@ const httpOptions = {
 })
 export class RestService {
 
-  private apiURLKudos = this.globals.urlBackend + '/kudos';
+  private apiURLKudos = this.globals.urlBackend + '/v2/kudos';
 
   constructor(private http: HttpClient, private globals: Globals) {}
 
