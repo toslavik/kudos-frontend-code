@@ -23,7 +23,7 @@ export class RestService {
   private apiURLKudos: string;
 
   constructor(private http: HttpClient, private globals: Globals) {
-    this.apiURLKudos = this.globals.urlBackend + '/v2/kudos';
+    this.apiURLKudos = this.globals.getUrl() + '/v2/kudos';
   }
 
   private extractData(res: Response) {
