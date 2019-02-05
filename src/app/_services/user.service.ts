@@ -14,8 +14,7 @@ const httpOptions = {
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
-    private apiURLKudos = environment.apiUrlBackend + '/users';
-    private apiCors = environment.apiUrlBackendCors;
+    private apiURLKudos = environment.apiUrlBackend + '/v2/users';
     constructor(private http: HttpClient) { }
 
     getAll() {

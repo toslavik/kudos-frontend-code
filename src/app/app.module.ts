@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, ErrorHandler } from '@angular/core';
+import { NgModule, ErrorHandler, APP_INITIALIZER } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,10 +17,13 @@ import {ClrFormsModule} from '@clr/angular';
 import {FormsModule} from '@angular/forms';
 import { KudosDashboardComponent } from './kudos-dashboard/kudos-dashboard.component';
 import { KudosEditComponent } from './kudos-edit/kudos-edit.component';
-import { Globals } from './globals';
 import { MonitoringService } from './_services/monitoring.service';
 import { MonitoringErrorHandler } from './_helpers/error.handler';
+import { DataService } from './_services/data.service';
 
+export function get_settings(dataservice: DataService) {
+  return () => dataservice.getSettings();
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +37,7 @@ import { MonitoringErrorHandler } from './_helpers/error.handler';
     KudosEditComponent
   ],
   imports: [
-    BrowserModule,
+  BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
@@ -42,10 +45,13 @@ import { MonitoringErrorHandler } from './_helpers/error.handler';
     ClarityModule,
     BrowserAnimationsModule
   ],
-  providers: [Globals, MonitoringService,
+  providers: [MonitoringService,
     {
       provide: ErrorHandler,
       useClass: MonitoringErrorHandler
+    }, DataService,
+    {
+      provide: APP_INITIALIZER, useFactory: get_settings, deps: [DataService], multi: true
     }
     // {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }

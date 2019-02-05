@@ -4,8 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrlBackend: 'https://kudos-apim-jmu6m5q6suefk.azure-api.net/v2',
-  apiUrlBackendCors: 'https://kudos-apim-jmu6m5q6suefk.azure-api.net/kudos-func-jmu6m5q6suefk/corsTest?name=chybaTK',
+  apiUrlBackend: 'https://kudos-apim-jmu6m5q6suefk.azure-api.net',
   appInsightsConfig: {
     instrumentationKey: '11e0b7ef-2ac3-43a0-ae89-1a44e8e2ae4e',
   }

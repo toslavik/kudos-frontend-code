@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpErrorResponse, HttpParams, HttpResponse} from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subscription } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 import {environment} from '../../environments/environment';
-import { Globals } from '../globals';
+import { DataService } from './data.service';
+import { async } from '@angular/core/testing';
 
 const httpOptions = {
   params: new HttpParams(),
@@ -22,8 +23,8 @@ export class RestService {
 
   private apiURLKudos: string;
 
-  constructor(private http: HttpClient, private globals: Globals) {
-    this.apiURLKudos = this.globals.getUrl() + '/v2/kudos';
+  constructor(private http: HttpClient, private dataservice: DataService) {
+    this.apiURLKudos = this.dataservice.urlBackend + '/v2/kudos';
   }
 
   private extractData(res: Response) {
@@ -32,7 +33,6 @@ export class RestService {
   }
 
   getKudos(): Observable<any> {
-    console.log(this.globals.urlBackend);
     return this.http.get(this.apiURLKudos, httpOptions).pipe(
       map(this.extractData));
   }
