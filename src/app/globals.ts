@@ -10,6 +10,7 @@ export class Globals implements OnInit{
   ngOnInit() {
   }
   constructor(private http: HttpClient) {
+    this.getUrl();
   }
 
   getUrl(){
