@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 import { User } from '../_models';
 import {environment} from '../../environments/environment';
+import { DataService } from './data.service';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -14,11 +15,11 @@ const httpOptions = {
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
-    private apiURLKudos = environment.apiUrlBackend + '/v2/users';
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private dataservice: DataService) {
+     }
 
     getAll() {
-        return this.http.get<User[]>(this.apiURLKudos, httpOptions);
+        return this.http.get<User[]>(this.dataservice.urlBackend + '/v2/kudos', httpOptions);
     }
 
     getById(id: number) {
