@@ -19,7 +19,7 @@ export class UserService {
      }
 
     getAll() {
-        return this.http.get<User[]>(this.dataservice.urlBackend + '/v2/kudos', httpOptions);
+        return this.http.get<User[]>(this.dataservice.urlBackend + '/v2/users', httpOptions);
     }
 
     getById(id: number) {
